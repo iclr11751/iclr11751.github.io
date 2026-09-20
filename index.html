@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ICLR Submission 11751">
+  <meta name="keywords" content="Force Conditioning, Stress Prediction, Strain Prediction, Flow Prediction, Damage Prediction, Fracture Prediction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ICLR Submission 11751</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <style>
+    body, html, .title, .subtitle, .content, .button, p, h1, h2, h3, h4, h5, h6, span, a, li {
+      font-family: 'Source Sans 3', sans-serif !important;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    section.hero {
+      background: linear-gradient(150deg, #ffffff 0%, #edf1f8 55%, #e4ecf7 100%);
+      border-bottom: 1px solid #c8d5e8;
+    }
+
+    section.section:nth-of-type(2n) {
+      background-color: #f5f7fb;
+    }
+
+    .title.is-3 {
+      margin-bottom: 1.8rem !important;
+      color: #13294B !important;
+    }
+
+    .media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1em;
+      margin: 1.25em 0;
+    }
+
+    .media-item {
+      flex: 1 1 360px;
+      max-width: 460px;
+      text-align: center;
+    }
+
+    .media-label {
+      display: block;
+      font-size: 1em;
+      font-weight: 700;
+      margin-bottom: 0.4em;
+      color: #363636;
+    }
+
+    .media-item img,
+    .media-item video,
+    .comp-video img,
+    .comp-video video {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 0.5em;
+      box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.15);
+      display: block;
+    }
+
+    .teaser-toggle {
+      display: inline-flex;
+      gap: 0.5em;
+      margin-bottom: 0.9em;
+    }
+
+    .teaser-frame-panel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75em;
+      min-height: 92px;
+      margin: 0 auto 1rem;
+      padding: 0.75em 1em;
+      border: 1px solid #d7dde8;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .teaser-object {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+      padding: 0.35em 0.5em;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.85em;
+      font-weight: 700;
+      color: #555;
+    }
+
+    .teaser-object.active {
+      color: #174a90;
+    }
+
+    .teaser-frame-thumb {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 2px solid #d7dde8;
+      background: #fff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .teaser-object:hover .teaser-frame-thumb {
+      border-color: #9db9de;
+    }
+
+    .teaser-object.active .teaser-frame-thumb {
+      border-color: #1f77d4;
+      box-shadow: 0 0 0 2px rgba(31, 119, 212, 0.14);
+    }
+
+    .teaser-toggle button {
+      min-width: 96px;
+      padding: 0.38em 1.2em;
+      border: 1px solid #c8c8c8;
+      border-radius: 4px;
+      background: #fff;
+      color: #111;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9em;
+    }
+
+    .teaser-toggle button.active {
+      border-color: #70b700;
+      background: #70b700;
+      color: #fff;
+    }
+
+    .teaser-motion-set {
+      display: none;
+    }
+
+    .teaser-motion-set.active {
+      display: block;
+    }
+
+    .teaser-motion-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.5em;
+    }
+
+    .teaser-motion-grid.is-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .teaser-motion-item {
+      text-align: center;
+    }
+
+    .teaser-motion-label {
+      padding: 0.5em 0.3em;
+      border-bottom: 2px solid #70b700;
+      background: #eef3fb;
+      color: #174a90;
+      font-size: 0.72em;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .teaser-motion-item video {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #fff;
+      box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.12);
+      display: block;
+    }
+
+    .sample-prompt,
+    .comparison-prompt {
+      flex: 0 0 100%;
+      max-width: 1080px;
+      margin: 0.5em auto 0;
+      padding: 0.35em 1em 0;
+      text-align: center;
+      font-size: 1.15em;
+      line-height: 1.45;
+    }
+
+    .comparison-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .comparison-header,
+    .comparison-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35em;
+    }
+
+    .comparison-header {
+      margin-bottom: 0.6em;
+    }
+
+    .comparison-row {
+      margin-bottom: 1.25em;
+    }
+
+    .method-name,
+    .comp-video {
+      flex: 1 1 0;
+      max-width: 210px;
+      text-align: center;
+    }
+
+    .method-name {
+      font-weight: 700;
+      font-size: 0.95em;
+    }
+
+    .label-groundtruth {
+      color: #f28c28;
+    }
+
+    .label-ours {
+      color: #1f77b4;
+    }
+
+    .mobile-tabs {
+      display: none;
+    }
+
+    footer.footer {
+      background: #ffffff;
+      border-top: none;
+    }
+
+    footer.footer p {
+      color: #13294B !important;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: #13294B;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(19, 41, 75, 0.35);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .media-item {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      .teaser-motion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mobile-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4em;
+        margin-bottom: 1em;
+      }
+
+      .mobile-tab {
+        padding: 0.4em 0.8em;
+        border: 2px solid #ddd;
+        border-radius: 0.5em;
+        cursor: pointer;
+        font-size: 0.8em;
+        background: white;
+        transition: all 0.2s;
+      }
+
+      .mobile-tab.active {
+        background: #13294B;
+        color: white;
+        border-color: #13294B;
+      }
+
+      .comparison-row {
+        display: none;
+      }
+
+      .comparison-row.mobile-active {
+        display: flex;
+      }
+
+      .comp-video {
+        flex: 0 0 calc(50% - 0.5em);
+        max-width: calc(50% - 0.5em);
+      }
+
+      .sample-prompt,
+      .comparison-prompt {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <div class="publication-title">
+            <h2 class="title is-3" style="font-weight: 500; margin-bottom: 0.3em; font-size: 2.2rem;">ICLR Submission 11751</h2>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+          <div style="margin-top: 2rem;">
+            <h2 class="title is-3">Dynamic Physics Map and Fracture Video Generation</h2>
+            <p class="media-label">Pick Intact Objects</p>
+            <div class="teaser-frame-panel" aria-label="Select object">
+              <button class="teaser-object active" type="button" data-teaser-object="red_cake">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/red_cake.png" alt="Red Cake">
+                <span>Red Cake</span>
+              </button>
+              <button class="teaser-object" type="button" data-teaser-object="black_bread">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/black_bread.png" alt="Black Bread">
+                <span>Black Bread</span>
+              </button>
+              <button class="teaser-object" type="button" data-teaser-object="green_cake">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/green_cake.png" alt="Green Cake">
+                <span>Green Cake</span>
+              </button>
+              <button class="teaser-object" type="button" data-teaser-object="steamed_bun">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/steamed_bun.png" alt="Steamed Bun">
+                <span>Steamed Bun</span>
+              </button>
+            </div>
+            <div class="teaser-toggle" aria-label="Force setting">
+              <button class="active" type="button" data-teaser-mode="vertical">Force Setting 1</button>
+              <button type="button" data-teaser-mode="horizontal">Force Setting 2</button>
+            </div>
+            <div class="teaser-motion-set active">
+              <div class="teaser-motion-grid">
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Force Conditions</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="force"><source src="./results/force/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Stress Prediction</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="stress"><source src="./results/stress/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Strain Prediction</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="strain"><source src="./results/strain/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Flow Prediction</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="flow"><source src="./results/flow/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Damage Prediction</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="damage"><source src="./results/damage/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Fracture Prediction</div>
+                  <video autoplay muted loop playsinline data-teaser-channel="fracture"><source src="./results/fracture/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Fracture Timing Condition with Same Force</h2>
+        <p class="media-label">Pick Intact Objects</p>
+        <div class="teaser-frame-panel" aria-label="Select object">
+              <button class="teaser-object active" type="button" data-frac-object="bear">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/bear.png" alt="Bear">
+                <span>Bear</span>
+              </button>
+              <button class="teaser-object" type="button" data-frac-object="frog">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/frog.png" alt="Frog">
+                <span>Frog</span>
+              </button>
+              <button class="teaser-object" type="button" data-frac-object="kong">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/kong.png" alt="Kong">
+                <span>Kong</span>
+              </button>
+        </div>
+        <div class="teaser-motion-grid is-3">
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Early Fracture</div>
+                  <video autoplay muted loop playsinline data-frac-stage="0"><source src="./results/fracture/bear__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Mid Fracture</div>
+                  <video autoplay muted loop playsinline data-frac-stage="1"><source src="./results/fracture/bear__vertical__vel2__mat2__frac1.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Late Fracture</div>
+                  <video autoplay muted loop playsinline data-frac-stage="2"><source src="./results/fracture/bear__vertical__vel2__mat2__frac2.mp4" type="video/mp4"></video>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Material Properties Condition</h2>
+        <p class="media-label">Pick Intact Objects</p>
+        <div class="teaser-frame-panel" aria-label="Select object">
+              <button class="teaser-object active" type="button" data-mat-object="red_cake">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/red_cake.png" alt="Red Cake">
+                <span>Red Cake</span>
+              </button>
+              <button class="teaser-object" type="button" data-mat-object="black_bread">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/black_bread.png" alt="Black Bread">
+                <span>Black Bread</span>
+              </button>
+              <button class="teaser-object" type="button" data-mat-object="green_cake">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/green_cake.png" alt="Green Cake">
+                <span>Green Cake</span>
+              </button>
+              <button class="teaser-object" type="button" data-mat-object="steamed_bun">
+                <img class="teaser-frame-thumb" src="./new_assets/intact/steamed_bun.png" alt="Steamed Bun">
+                <span>Steamed Bun</span>
+              </button>
+        </div>
+        <div class="teaser-motion-grid is-3">
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Material 1</div>
+                  <video autoplay muted loop playsinline data-mat-index="0"><source src="./results/fracture/red_cake__vertical__vel2__mat0__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Material 2</div>
+                  <video autoplay muted loop playsinline data-mat-index="1"><source src="./results/fracture/red_cake__vertical__vel2__mat1__frac0.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Material 3</div>
+                  <video autoplay muted loop playsinline data-mat-index="2"><source src="./results/fracture/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparison Results</h2>
+
+        <div class="comparison-container">
+          <div class="mobile-tabs">
+            <span class="mobile-tab active" data-case="0">Sample 1</span>
+            <span class="mobile-tab" data-case="1">Sample 2</span>
+            <span class="mobile-tab" data-case="2">Sample 3</span>
+          </div>
+
+          <div class="comparison-header">
+            <div class="method-name">Force Conditions</div>
+            <div class="method-name">Baseline 1</div>
+            <div class="method-name">Baseline 2</div>
+            <div class="method-name label-groundtruth">Groundtruth</div>
+            <div class="method-name label-ours">Ours</div>
+          </div>
+
+          <div class="comparison-row mobile-active" data-case="0">
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample1.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample1.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample1.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample1.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample1.mp4" type="video/mp4"></video></div>
+            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
+          </div>
+          <div class="comparison-row" data-case="1">
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample2.mp4" type="video/mp4"></video></div>
+            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
+          </div>
+          <div class="comparison-row" data-case="2">
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample3.mp4" type="video/mp4"></video></div>
+            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Teaser Image</h2>
+        <div style="max-width: 1800px; margin: 0 auto;">
+          <img src="./new_assets/pdf_renders/teaser.png" alt="Teaser image" style="width: 100%; height: auto; display: block; background: #fff;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Results</h2>
+
+        <div class="media-grid">
+          <div class="media-item">
+            <p class="media-label">Force Conditions</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample1_force_conditions.mp4" type="video/mp4"></video>
+          </div>
+          <div class="media-item">
+            <p class="media-label">Prediction</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample1_prediction.mp4" type="video/mp4"></video>
+          </div>
+          <!-- <p class="sample-prompt"><strong>Setting:</strong> ""</p> -->
+        </div>
+
+        <div class="media-grid">
+          <div class="media-item">
+            <p class="media-label">Force Conditions</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample2_force_conditions.mp4" type="video/mp4"></video>
+          </div>
+          <div class="media-item">
+            <p class="media-label">Prediction</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample2_prediction.mp4" type="video/mp4"></video>
+          </div>
+          <!-- <p class="sample-prompt"><strong>Setting:</strong> ""</p> -->
+        </div>
+
+        <div class="media-grid">
+          <div class="media-item">
+            <p class="media-label">Force Conditions</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample3_force_conditions.mp4" type="video/mp4"></video>
+          </div>
+          <div class="media-item">
+            <p class="media-label">Prediction</p>
+            <video autoplay muted loop playsinline><source src="./new_assets/all_qual_results/sample3_prediction.mp4" type="video/mp4"></video>
+          </div>
+          <!-- <p class="sample-prompt"><strong>Setting:</strong> ""</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>Anonymous project page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  var teaserState = { object: 'red_cake', mode: 'vertical' };
+
+  function updateTeaser() {
+    document.querySelectorAll('[data-teaser-channel]').forEach(function(video) {
+      var src = './results/' + video.dataset.teaserChannel + '/' + teaserState.object + '__' + teaserState.mode + '__vel2__mat2__frac0.mp4';
+      video.querySelector('source').setAttribute('src', src);
+      video.load();
+      video.play();
+    });
+  }
+
+  document.querySelectorAll('[data-teaser-mode]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      teaserState.mode = this.dataset.teaserMode;
+      document.querySelectorAll('[data-teaser-mode]').forEach(function(btn) { btn.classList.remove('active'); });
+      this.classList.add('active');
+      updateTeaser();
+    });
+  });
+
+  document.querySelectorAll('[data-teaser-object]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      teaserState.object = this.dataset.teaserObject;
+      document.querySelectorAll('[data-teaser-object]').forEach(function(btn) { btn.classList.remove('active'); });
+      this.classList.add('active');
+      updateTeaser();
+    });
+  });
+
+  document.querySelectorAll('[data-frac-object]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var obj = this.dataset.fracObject;
+      document.querySelectorAll('[data-frac-object]').forEach(function(btn) { btn.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('[data-frac-stage]').forEach(function(video) {
+        video.querySelector('source').setAttribute('src', './results/fracture/' + obj + '__vertical__vel2__mat2__frac' + video.dataset.fracStage + '.mp4');
+        video.load();
+        video.play();
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-mat-object]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      var obj = this.dataset.matObject;
+      document.querySelectorAll('[data-mat-object]').forEach(function(btn) { btn.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('[data-mat-index]').forEach(function(video) {
+        video.querySelector('source').setAttribute('src', './results/fracture/' + obj + '__vertical__vel2__mat' + video.dataset.matIndex + '__frac0.mp4');
+        video.load();
+        video.play();
+      });
+    });
+  });
+
+  document.querySelectorAll('.mobile-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var caseId = this.dataset.case;
+      document.querySelectorAll('.mobile-tab').forEach(function(t) { t.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('.comparison-row').forEach(function(row) {
+        row.classList.remove('mobile-active');
+        row.querySelectorAll('video').forEach(function(v) { v.pause(); });
+      });
+      var activeRow = document.querySelector('.comparison-row[data-case="' + caseId + '"]');
+      activeRow.classList.add('mobile-active');
+      activeRow.querySelectorAll('video').forEach(function(v) { v.currentTime = 0; v.play(); });
+    });
+  });
+
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+</script>
+</body>
+</html>
