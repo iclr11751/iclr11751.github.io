@@ -218,6 +218,15 @@
       line-height: 1.45;
     }
 
+    .comparison-caption {
+      flex: 0 0 100%;
+      margin-bottom: 0.3em;
+      font-size: 0.95em;
+      font-weight: 700;
+      color: #45618c;
+      text-align: center;
+    }
+
     .comparison-container {
       width: 100%;
       overflow-x: auto;
@@ -468,8 +477,19 @@
 
         <div class="comparison-container">
           <div class="mobile-tabs">
-            <span class="mobile-tab active" data-case="0">Green Cake</span>
-            <span class="mobile-tab" data-case="1">Pikachu</span>
+            <span class="mobile-tab active" data-case="0">Black Bread (Horizontal)</span>
+            <span class="mobile-tab" data-case="1">Black Bread (Vertical)</span>
+            <span class="mobile-tab" data-case="2">Bread Roll (Horizontal)</span>
+            <span class="mobile-tab" data-case="3">Bread Roll (Vertical)</span>
+            <span class="mobile-tab" data-case="4">Green Cake (Horizontal)</span>
+            <span class="mobile-tab" data-case="5">Green Cake (Vertical)</span>
+            <span class="mobile-tab" data-case="6">Kong (Horizontal)</span>
+            <span class="mobile-tab" data-case="7">Pig (Horizontal)</span>
+            <span class="mobile-tab" data-case="8">Pikachu (Horizontal)</span>
+            <span class="mobile-tab" data-case="9">Red Cake (Horizontal)</span>
+            <span class="mobile-tab" data-case="10">Red Cake (Vertical)</span>
+            <span class="mobile-tab" data-case="11">Steamed Bun (Horizontal)</span>
+            <span class="mobile-tab" data-case="12">Steamed Bun (Vertical)</span>
           </div>
 
           <div class="comparison-header">
@@ -481,19 +501,120 @@
           </div>
 
           <div class="comparison-row mobile-active" data-case="0">
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/force.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row4.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/ours.mp4" type="video/mp4"></video></div>
+            <p class="comparison-caption">Black Bread (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__horizontal/ours.mp4" type="video/mp4"></video></div>
           </div>
 
           <div class="comparison-row" data-case="1">
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/force.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row4.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/ours.mp4" type="video/mp4"></video></div>
+            <p class="comparison-caption">Black Bread (Vertical)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__vertical/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__vertical/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__vertical/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__vertical/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/black_bread__vertical/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="2">
+            <p class="comparison-caption">Bread Roll (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="3">
+            <p class="comparison-caption">Bread Roll (Vertical)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__vertical/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__vertical/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__vertical/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__vertical/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/bread_roll__vertical/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="4">
+            <p class="comparison-caption">Green Cake (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="5">
+            <p class="comparison-caption">Green Cake (Vertical)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__vertical/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__vertical/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__vertical/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__vertical/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/green_cake__vertical/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="6">
+            <p class="comparison-caption">Kong (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/kong__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/kong__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/kong__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/kong__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/kong__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="7">
+            <p class="comparison-caption">Pig (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pig__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pig__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pig__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pig__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pig__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="8">
+            <p class="comparison-caption">Pikachu (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pikachu__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pikachu__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pikachu__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pikachu__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/pikachu__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="9">
+            <p class="comparison-caption">Red Cake (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="10">
+            <p class="comparison-caption">Red Cake (Vertical)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__vertical/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__vertical/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__vertical/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__vertical/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/red_cake__vertical/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="11">
+            <p class="comparison-caption">Steamed Bun (Horizontal)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__horizontal/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__horizontal/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__horizontal/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__horizontal/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__horizontal/ours.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="comparison-row" data-case="12">
+            <p class="comparison-caption">Steamed Bun (Vertical)</p>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__vertical/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__vertical/force_prompting.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__vertical/phyco.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__vertical/cogvideox.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video muted loop playsinline preload="none"><source src="./results/compare/steamed_bun__vertical/ours.mp4" type="video/mp4"></video></div>
           </div>
 
         </div>
@@ -621,6 +742,22 @@
       activeRow.querySelectorAll('video').forEach(function(v) { v.currentTime = 0; v.play(); });
     });
   });
+
+  var compRows = document.querySelectorAll('.comparison-row');
+  if ('IntersectionObserver' in window) {
+    var compObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        entry.target.querySelectorAll('video').forEach(function(v) {
+          if (entry.isIntersecting) { v.play().catch(function() {}); } else { v.pause(); }
+        });
+      });
+    }, { rootMargin: '200px 0px' });
+    compRows.forEach(function(row) { compObserver.observe(row); });
+  } else {
+    compRows.forEach(function(row) {
+      row.querySelectorAll('video').forEach(function(v) { v.play().catch(function() {}); });
+    });
+  }
 
   var btn = document.getElementById('back-to-top');
   window.addEventListener('scroll', function() {
