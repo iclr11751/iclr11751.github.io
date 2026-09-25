@@ -188,6 +188,16 @@
       text-transform: uppercase;
     }
 
+    .label-params {
+      display: block;
+      margin-top: 0.15em;
+      font-size: 0.92em;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: #45618c;
+    }
+
     .teaser-motion-item video {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -437,11 +447,11 @@
         <h2 class="title is-3">Material Properties Condition</h2>
         <div class="teaser-motion-grid is-2">
           <div class="teaser-motion-item">
-            <div class="teaser-motion-label">Soft Material</div>
+            <div class="teaser-motion-label">Soft Material<span class="label-params">E=1e3, &nu;=0.3, l<sub>on</sub>=2, l<sub>crit</sub>=3</span></div>
             <video autoplay muted loop playsinline><source src="./results/material/soft.mp4" type="video/mp4"></video>
           </div>
           <div class="teaser-motion-item">
-            <div class="teaser-motion-label">Stiff Material</div>
+            <div class="teaser-motion-label">Stiff Material<span class="label-params">E=1e6, &nu;=0.3, l<sub>on</sub>=2, l<sub>crit</sub>=3</span></div>
             <video autoplay muted loop playsinline><source src="./results/material/stiff.mp4" type="video/mp4"></video>
           </div>
         </div>
@@ -464,10 +474,10 @@
 
           <div class="comparison-header">
             <div class="method-name">Force Conditions</div>
-            <div class="method-name">Baseline 1</div>
-            <div class="method-name">Baseline 2</div>
-            <div class="method-name">Baseline 3</div>
-            <div class="method-name label-ours">Ours</div>
+            <div class="method-name">Force Prompting</div>
+            <div class="method-name">PhyCo</div>
+            <div class="method-name">CogVideoX</div>
+            <div class="method-name label-ours">FracGen (Ours)</div>
           </div>
 
           <div class="comparison-row mobile-active" data-case="0">
