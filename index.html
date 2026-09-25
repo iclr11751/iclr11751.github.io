@@ -219,6 +219,62 @@
       line-height: 1.45;
     }
 
+    .abl-container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .abl-header,
+    .abl-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5em;
+    }
+
+    .abl-header {
+      margin-bottom: 0.6em;
+    }
+
+    .abl-col-name {
+      font-weight: 700;
+      font-size: 0.95em;
+      color: #13294B;
+    }
+
+    .abl-row {
+      margin-bottom: 1.4em;
+    }
+
+    .abl-row-label {
+      grid-column: 1 / -1;
+      margin-bottom: 0.35em;
+      font-size: 0.95em;
+      font-weight: 700;
+      color: #45618c;
+    }
+
+    .abl-cell video {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #fff;
+      box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.12);
+      display: block;
+    }
+
+    .abl-na {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+      border: 1px dashed #c3ccda;
+      border-radius: 4px;
+      background: #f2f5fa;
+      color: #8a97a9;
+      font-size: 0.9em;
+      font-weight: 700;
+    }
+
     .comparison-caption {
       flex: 0 0 100%;
       margin-bottom: 0.3em;
@@ -624,6 +680,60 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Ablation Studies</h2>
+
+        <div class="abl-container">
+          <div class="abl-header">
+            <div class="abl-col-name">Stage 1</div>
+            <div class="abl-col-name">Stage 2</div>
+            <div class="abl-col-name">Stage 3</div>
+          </div>
+
+          <div class="abl-row">
+            <p class="abl-row-label">Generated Fracture Video</p>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/fracture/stage1.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/fracture/stage2.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/fracture/stage3.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="abl-row">
+            <p class="abl-row-label">Generated Strain Map</p>
+            <div class="abl-cell"><div class="abl-na">Not Applicable</div></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/strain/stage2.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/strain/stage3.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="abl-row">
+            <p class="abl-row-label">Generated Stress Map</p>
+            <div class="abl-cell"><div class="abl-na">Not Applicable</div></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/stress/stage2.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/stress/stage3.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="abl-row">
+            <p class="abl-row-label">Generated Damage Map</p>
+            <div class="abl-cell"><div class="abl-na">Not Applicable</div></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/damage/stage2.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/damage/stage3.mp4" type="video/mp4"></video></div>
+          </div>
+
+          <div class="abl-row">
+            <p class="abl-row-label">Generated Flow Map</p>
+            <div class="abl-cell"><div class="abl-na">Not Applicable</div></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/flow/stage2.mp4" type="video/mp4"></video></div>
+            <div class="abl-cell"><video autoplay muted loop playsinline preload="none"><source src="./results/ablation/flow/stage3.mp4" type="video/mp4"></video></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="columns is-centered">
@@ -685,7 +795,7 @@
     });
   });
 
-  var compRows = document.querySelectorAll('.comparison-row');
+  var compRows = document.querySelectorAll('.comparison-row, .abl-row');
   if ('IntersectionObserver' in window) {
     var compObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
