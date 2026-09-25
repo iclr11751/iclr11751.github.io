@@ -157,6 +157,16 @@
       gap: 0.5em;
     }
 
+    .teaser-motion-grid.is-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .teaser-video-block {
+      margin-bottom: 2.5rem;
+    }
+
     .teaser-motion-grid.is-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       max-width: 780px;
@@ -347,6 +357,18 @@
             <span class="author-block">Anonymous Authors</span>
           </div>
           <div style="margin-top: 2rem;">
+            <div class="teaser-video-block">
+              <div class="teaser-motion-grid is-2">
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Early Fracture</div>
+                  <video autoplay muted loop playsinline><source src="./results/teaser/early_fracture.mp4" type="video/mp4"></video>
+                </div>
+                <div class="teaser-motion-item">
+                  <div class="teaser-motion-label">Delay Fracture</div>
+                  <video autoplay muted loop playsinline><source src="./results/teaser/delay_fracture.mp4" type="video/mp4"></video>
+                </div>
+              </div>
+            </div>
             <h2 class="title is-3">Dynamic Physics Map and Fracture Video Generation</h2>
             <p class="media-label">Pick Intact Objects</p>
             <div class="teaser-frame-panel" aria-label="Select object">
@@ -406,82 +428,21 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Fracture Timing Condition with Same Force</h2>
-        <p class="media-label">Pick Intact Objects</p>
-        <div class="teaser-frame-panel" aria-label="Select object">
-              <button class="teaser-object active" type="button" data-frac-object="bear">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/bear.png" alt="Bear">
-                <span>Bear</span>
-              </button>
-              <button class="teaser-object" type="button" data-frac-object="frog">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/frog.png" alt="Frog">
-                <span>Frog</span>
-              </button>
-              <button class="teaser-object" type="button" data-frac-object="kong">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/kong.png" alt="Kong">
-                <span>Kong</span>
-              </button>
-        </div>
-        <div class="teaser-motion-grid is-3">
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Early Fracture</div>
-                  <video autoplay muted loop playsinline data-frac-stage="0"><source src="./results/fracture/bear__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
-                </div>
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Mid Fracture</div>
-                  <video autoplay muted loop playsinline data-frac-stage="1"><source src="./results/fracture/bear__vertical__vel2__mat2__frac1.mp4" type="video/mp4"></video>
-                </div>
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Late Fracture</div>
-                  <video autoplay muted loop playsinline data-frac-stage="2"><source src="./results/fracture/bear__vertical__vel2__mat2__frac2.mp4" type="video/mp4"></video>
-                </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Material Properties Condition</h2>
-        <p class="media-label">Pick Intact Objects</p>
-        <div class="teaser-frame-panel" aria-label="Select object">
-              <button class="teaser-object active" type="button" data-mat-object="red_cake">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/red_cake.png" alt="Red Cake">
-                <span>Red Cake</span>
-              </button>
-              <button class="teaser-object" type="button" data-mat-object="black_bread">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/black_bread.png" alt="Black Bread">
-                <span>Black Bread</span>
-              </button>
-              <button class="teaser-object" type="button" data-mat-object="green_cake">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/green_cake.png" alt="Green Cake">
-                <span>Green Cake</span>
-              </button>
-              <button class="teaser-object" type="button" data-mat-object="steamed_bun">
-                <img class="teaser-frame-thumb" src="./new_assets/intact/steamed_bun.png" alt="Steamed Bun">
-                <span>Steamed Bun</span>
-              </button>
-        </div>
-        <div class="teaser-motion-grid is-3">
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Material 1</div>
-                  <video autoplay muted loop playsinline data-mat-index="0"><source src="./results/fracture/red_cake__vertical__vel2__mat0__frac0.mp4" type="video/mp4"></video>
-                </div>
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Material 2</div>
-                  <video autoplay muted loop playsinline data-mat-index="1"><source src="./results/fracture/red_cake__vertical__vel2__mat1__frac0.mp4" type="video/mp4"></video>
-                </div>
-                <div class="teaser-motion-item">
-                  <div class="teaser-motion-label">Material 3</div>
-                  <video autoplay muted loop playsinline data-mat-index="2"><source src="./results/fracture/red_cake__vertical__vel2__mat2__frac0.mp4" type="video/mp4"></video>
-                </div>
+        <div class="teaser-motion-grid is-2">
+          <div class="teaser-motion-item">
+            <div class="teaser-motion-label">Soft Material</div>
+            <video autoplay muted loop playsinline><source src="./results/material/soft.mp4" type="video/mp4"></video>
+          </div>
+          <div class="teaser-motion-item">
+            <div class="teaser-motion-label">Stiff Material</div>
+            <video autoplay muted loop playsinline><source src="./results/material/stiff.mp4" type="video/mp4"></video>
+          </div>
         </div>
       </div>
     </div>
@@ -496,42 +457,32 @@
 
         <div class="comparison-container">
           <div class="mobile-tabs">
-            <span class="mobile-tab active" data-case="0">Sample 1</span>
-            <span class="mobile-tab" data-case="1">Sample 2</span>
-            <span class="mobile-tab" data-case="2">Sample 3</span>
+            <span class="mobile-tab active" data-case="0">Green Cake</span>
+            <span class="mobile-tab" data-case="1">Pikachu</span>
           </div>
 
           <div class="comparison-header">
             <div class="method-name">Force Conditions</div>
             <div class="method-name">Baseline 1</div>
             <div class="method-name">Baseline 2</div>
-            <div class="method-name label-groundtruth">Groundtruth</div>
+            <div class="method-name">Baseline 3</div>
             <div class="method-name label-ours">Ours</div>
           </div>
 
           <div class="comparison-row mobile-active" data-case="0">
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample1.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample1.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample1.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample1.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample1.mp4" type="video/mp4"></video></div>
-            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/row4.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/green_cake/ours.mp4" type="video/mp4"></video></div>
           </div>
+
           <div class="comparison-row" data-case="1">
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample2.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample2.mp4" type="video/mp4"></video></div>
-            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
-          </div>
-          <div class="comparison-row" data-case="2">
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/force_conditions/sample3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline1/sample3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_baseline2/sample3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/ground_truth_videos/sample3.mp4" type="video/mp4"></video></div>
-            <div class="comp-video"><video autoplay muted loop playsinline><source src="./new_assets/compare/frame_videos_ours/sample3.mp4" type="video/mp4"></video></div>
-            <!-- <p class="comparison-prompt"><strong>Setting:</strong> ""</p> -->
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/force.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row2.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row3.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/row4.mp4" type="video/mp4"></video></div>
+            <div class="comp-video"><video autoplay muted loop playsinline><source src="./results/compare/pikachu/ours.mp4" type="video/mp4"></video></div>
           </div>
 
         </div>
@@ -642,32 +593,6 @@
       document.querySelectorAll('[data-teaser-object]').forEach(function(btn) { btn.classList.remove('active'); });
       this.classList.add('active');
       updateTeaser();
-    });
-  });
-
-  document.querySelectorAll('[data-frac-object]').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var obj = this.dataset.fracObject;
-      document.querySelectorAll('[data-frac-object]').forEach(function(btn) { btn.classList.remove('active'); });
-      this.classList.add('active');
-      document.querySelectorAll('[data-frac-stage]').forEach(function(video) {
-        video.querySelector('source').setAttribute('src', './results/fracture/' + obj + '__vertical__vel2__mat2__frac' + video.dataset.fracStage + '.mp4');
-        video.load();
-        video.play();
-      });
-    });
-  });
-
-  document.querySelectorAll('[data-mat-object]').forEach(function(button) {
-    button.addEventListener('click', function() {
-      var obj = this.dataset.matObject;
-      document.querySelectorAll('[data-mat-object]').forEach(function(btn) { btn.classList.remove('active'); });
-      this.classList.add('active');
-      document.querySelectorAll('[data-mat-index]').forEach(function(video) {
-        video.querySelector('source').setAttribute('src', './results/fracture/' + obj + '__vertical__vel2__mat' + video.dataset.matIndex + '__frac0.mp4');
-        video.load();
-        video.play();
-      });
     });
   });
 
