@@ -1,2 +1,6 @@
 .DS_Store
 raw_results/
+frames/
+*.mp4
+!results/**/*.mp4
+paper_results/
