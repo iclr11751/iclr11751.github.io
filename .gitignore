@@ -4,3 +4,4 @@ frames/
 *.mp4
 !results/**/*.mp4
 paper_results/
+!rebuttal/*.mp4
